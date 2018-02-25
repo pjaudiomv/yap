@@ -1,19 +1,21 @@
 <?php
+    include 'config.php';
     include 'functions.php';
     header("content-type: text/xml");
     echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
     
     $searchType = $_REQUEST['Digits'];
-    
+    $introTitle = $_REQUEST['title'];
     if ($searchType == "1") {
-        $action = "someone to talk to";
+        $searchDescription = "someone to talk to";
     } else {
-        $action = "meetings";
+        $searchDescription = "meetings";
     }
 ?>
 <Response>
-    <Gather numDigits="1" timeout="10000" action="input-method-result.php?SearchType=<?php echo $searchType ?>" method="GET">
-        <Say>Press 1 to search for <?php echo $action ?> by city or county name.</Say>
-        <Say>Press 2 to search for <?php echo $action ?> by zip code.</Say>
+    <Gather numDigits="1" timeout="10" action="input-method-result.php?SearchType=<?php echo $searchType ?>" method="GET">
+       <Say voice="<?php echo $voice; ?>" language="<?php echo $language; ?>"><?php echo $introTitle ?></Say>
+        <Say voice="<?php echo $voice; ?>" language="<?php echo $language; ?>">Press 1 to search for <?php echo $searchDescription ?> by city or county name.</Say>
+        <Say voice="<?php echo $voice; ?>" language="<?php echo $language; ?>">Press 2 to search for <?php echo $searchDescription ?> by zip code.</Say>
     </Gather>
 </Response>
