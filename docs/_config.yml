@@ -16,7 +16,7 @@
 title: Yap
 description: Yap Documentation
 baseurl:
-url: "//yap.bmlt.app"
+url: "//pjaudiomv.github.io/yap"
 search_enabled: true
 sass:
   # Load dependancies
